@@ -1,0 +1,1 @@
+# nextjs-embedded-plugin
