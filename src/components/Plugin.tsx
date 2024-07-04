@@ -1,6 +1,10 @@
 import { useEffect } from "react";
 
-const Plugin = ({ config }) => {
+export interface PluginConfig {
+  welcomeText: string;
+}
+
+const Plugin = ({ config }: { config: PluginConfig }) => {
   useEffect(() => {
     // Your initialization logic here
     console.log("Plugin initialized with config:", config);
@@ -9,7 +13,8 @@ const Plugin = ({ config }) => {
   return (
     <div id="my-plugin-container">
       <h1>My Plugin UI</h1>
-      <p>This is your plugin's user interface.</p>
+      <p>This is your plugin&apos;s user interface.</p>
+      {config.welcomeText}
     </div>
   );
 };
