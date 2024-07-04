@@ -21,9 +21,8 @@
 //   document.head.appendChild(script);
 // })();
 
-
-(function() {
-  const pluginUrl = './out/plugin.html';
+(function () {
+  const pluginUrl = "http://127.0.0.1:3001/plugin.html";
   // const jsFiles = [
   //   './out/_next/static/3fexzXcoWAwt0gyijxJ7v/pages/_app.js',
   //   './out/_next/static/3fexzXcoWAwt0gyijxJ7v/pages/_error.js',
@@ -33,10 +32,10 @@
 
   // Load the plugin HTML
   fetch(pluginUrl)
-    .then(response => response.text())
-    .then(html => {
-      const container = document.createElement('div');
-      container.id = 'plugin-container';
+    .then((response) => response.text())
+    .then((html) => {
+      const container = document.createElement("div");
+      container.id = "plugin-container";
       container.innerHTML = html;
       document.body.appendChild(container);
 
@@ -47,5 +46,5 @@
       //   document.head.appendChild(script);
       // });
     })
-    .catch(err => console.error('Failed to load plugin:', err));
+    .catch((err) => console.error("Failed to load plugin:", err));
 })();

@@ -1,22 +1,35 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export interface PluginConfig {
   welcomeText: string;
 }
 
-const Plugin = ({ config }: { config: PluginConfig }) => {
+export const Plugin = ({ config }: { config: PluginConfig }) => {
+  const [enableChat, setEnableChat] = useState(false);
+
   useEffect(() => {
-    // Your initialization logic here
     console.log("Plugin initialized with config:", config);
   }, [config]);
 
   return (
-    <div id="my-plugin-container">
-      <h1>My Plugin UI</h1>
-      <p>This is your plugin&apos;s user interface.</p>
-      {config.welcomeText}
-    </div>
+    <>
+      <button
+        className="fixed bottom-2 right-2 border border-purple-700 px-4 py-2 rounded-md"
+        onClick={() => setEnableChat((prev) => !prev)}
+      >
+        Open
+      </button>
+      {enableChat ? (
+        <div
+          id="my-plugin-container"
+          className="fixed bottom-16 right-2 border border-purple-700 px-4 py-2 rounded-md"
+        >
+          <h1>My Plugin UI</h1>
+          <p>This is your plugin&apos;s user interface.</p>
+          <p>Plugin configuration.</p>
+          <code>{JSON.stringify(config)}</code>
+        </div>
+      ) : null}
+    </>
   );
 };
-
-export default Plugin;

@@ -1,6 +1,6 @@
 "use client";
 
-import Plugin from "@/components/Plugin";
+import { Plugin } from "@/components/Plugin";
 
 export default function Page() {
   return (
