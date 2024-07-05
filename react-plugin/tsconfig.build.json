@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
+    // use separated script to copy bundled files
+    "outDir": "../nestjs-static-server/static",
     "jsx": "preserve"
   },
   "extends": "./tsconfig.json",
