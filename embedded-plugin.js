@@ -22,29 +22,43 @@
 // })();
 
 (function () {
-  const pluginUrl = "http://127.0.0.1:3001/plugin.html";
-  // const jsFiles = [
-  //   './out/_next/static/3fexzXcoWAwt0gyijxJ7v/pages/_app.js',
-  //   './out/_next/static/3fexzXcoWAwt0gyijxJ7v/pages/_error.js',
-  //   './out/_next/static/chunks/app/plugin/layout-3fexzXcoWAwt0gyijxJ7v.js',
-  //   './out/_next/static/chunks/app/plugin/page-3fexzXcoWAwt0gyijxJ7v.js'
-  // ];
+  // const pluginUrl = "http://127.0.0.1:3001/plugin.html";
+  // const pluginUrl = "http://127.0.0.1:3001/main.js";
+  const jsFiles = [
+    "https://unpkg.com/react@16/umd/react.production.min.js",
+    "https://unpkg.com/react-dom@16/umd/react-dom.production.min.js",
 
-  // Load the plugin HTML
-  fetch(pluginUrl)
-    .then((response) => response.text())
-    .then((html) => {
-      const container = document.createElement("div");
-      container.id = "plugin-container";
-      container.innerHTML = html;
-      document.body.appendChild(container);
+    // "http://127.0.0.1:3001/main.js",
+    "http://127.0.0.1:3001/react-webplugin.js",
+    // './out/_next/static/3fexzXcoWAwt0gyijxJ7v/pages/_app.js',
+    // './out/_next/static/3fexzXcoWAwt0gyijxJ7v/pages/_error.js',
+    // './out/_next/static/chunks/app/plugin/layout-3fexzXcoWAwt0gyijxJ7v.js',
+    // './out/_next/static/chunks/app/plugin/page-3fexzXcoWAwt0gyijxJ7v.js'
+  ];
 
-      // Load the JS files
-      // jsFiles.forEach(file => {
-      //   const script = document.createElement('script');
-      //   script.src = file;
-      //   document.head.appendChild(script);
-      // });
-    })
-    .catch((err) => console.error("Failed to load plugin:", err));
+  // Load the JS files
+  jsFiles.forEach((file) => {
+    const script = document.createElement("script");
+    script.src = file;
+    script.type = "module";
+    document.head.appendChild(script);
+  });
+
+  // // Load the plugin HTML
+  // fetch(pluginUrl)
+  //   .then((response) => response.text())
+  //   .then((html) => {
+  //     const container = document.createElement("div");
+  //     container.id = "plugin-container";
+  //     container.innerHTML = html;
+  //     document.body.appendChild(container);
+
+  //     // Load the JS files
+  //     // jsFiles.forEach(file => {
+  //     //   const script = document.createElement('script');
+  //     //   script.src = file;
+  //     //   document.head.appendChild(script);
+  //     // });
+  //   })
+  //   .catch((err) => console.error("Failed to load plugin:", err));
 })();
