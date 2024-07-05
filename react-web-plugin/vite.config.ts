@@ -9,7 +9,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "./lib/main.ts"),
-      name: "webplugin",
+      name: "react-web-plugin",
       // fileName: (format) => `index.${format}.js`,
     },
     // rollupOptions: {
@@ -30,6 +30,15 @@ export default defineConfig({
     //     // },
     //   },
     // },
+    // rollupOptions: {
+    //   external: ["react", "react-dom"],
+    //   output: {
+    //     globals: {
+    //       react: "React",
+    //       "react-dom": "ReactDOM",
+    //     },
+    //   },
+    // },
     // sourcemap: true,
     emptyOutDir: true,
   },
@@ -39,5 +48,8 @@ export default defineConfig({
     postcss: {
       plugins: [tailwindcss],
     },
+  },
+  define: {
+    "process.env.NODE_ENV": '"production"',
   },
 });

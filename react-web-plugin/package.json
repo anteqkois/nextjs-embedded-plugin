@@ -1,5 +1,5 @@
 {
-  "name": "web-plugin",
+  "name": "react-web-plugin",
   "private": true,
   "version": "0.0.0",
   "type": "module",
