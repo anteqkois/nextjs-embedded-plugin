@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export interface PluginConfig {
-  welcomeText: string;
+  apiKey: string;
 }
 
 export const Plugin = ({ config }: { config: PluginConfig }) => {
@@ -14,7 +14,7 @@ export const Plugin = ({ config }: { config: PluginConfig }) => {
   return (
     <>
       <button
-        className="fixed bottom-2 right-2 border border-purple-700 px-4 py-2 rounded-md text-slate-100"
+        className="fixed bottom-2 right-2 border border-purple-700 px-4 py-2 rounded-md bg-zinc-950 text-zinc-100"
         onClick={() => setEnableChat((prev) => !prev)}
       >
         Open
@@ -22,7 +22,7 @@ export const Plugin = ({ config }: { config: PluginConfig }) => {
       {enableChat ? (
         <div
           id="my-plugin-container"
-          className="fixed bottom-16 right-2 border border-purple-700 px-4 py-2 rounded-md text-slate-100"
+          className="fixed bottom-16 right-2 border border-purple-700 px-4 py-2 rounded-md bg-zinc-950 text-zinc-100"
         >
           <h1>My Plugin UI</h1>
           <p>This is your plugin&apos;s user interface.</p>

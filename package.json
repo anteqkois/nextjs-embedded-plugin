@@ -1,0 +1,5 @@
+{
+	"devDependencies": {
+		"vite-plugin-lib-inject-css": "^2.1.1"
+	}
+}

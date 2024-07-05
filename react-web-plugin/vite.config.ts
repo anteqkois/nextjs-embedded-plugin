@@ -1,8 +1,10 @@
+import cdn from 'vite-plugin-cdn-import'
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import { resolve } from "path";
+// import { libInjectCss } from 'vite-plugin-lib-inject-css'
 // import dts from "vite-plugin-dts";
-import tailwindcss from "tailwindcss";
+// import tailwindcss from "tailwindcss";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,45 +12,33 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, "./lib/main.ts"),
       name: "react-web-plugin",
-      // fileName: (format) => `index.${format}.js`,
-    },
-    // rollupOptions: {
-    //   external: [
-    //     "react",
-    //     "react-dom",
-    //     // "tailwindcss"
-    //   ],
-    //   output: {
-    //     paths: {
-    //       react: "https://unpkg.com/react@16/umd/react.production.min.js",
-    //       "react-dom": "https://unpkg.com/react-dom@16/umd/react-dom.production.min.js",
-    //     },
-    //     // globals: {
-    //     //   react: "React",
-    //     //   "react-dom": "ReactDOM",
-    //     //   tailwindcss: "tailwindcss",
-    //     // },
-    //   },
-    // },
-    rollupOptions: {
-      external: ["react", "react-dom"],
-      output: {
-        globals: {
-          react: "React",
-          "react-dom": "ReactDOM",
-        },
-      },
     },
     // sourcemap: true,
     emptyOutDir: true,
   },
-  // plugins: [react(), dts({ rollupTypes: true })],
-  plugins: [react()],
-  css: {
-    postcss: {
-      plugins: [tailwindcss],
-    },
-  },
+  plugins: [
+    react(),
+		// libInjectCss(),
+    cdn({
+      modules: [
+        {
+          name: "react",
+          var: "React",
+          path: `umd/react.production.min.js`,
+        },
+        {
+          name: "react-dom",
+          var: "ReactDOM",
+          path: `umd/react-dom.production.min.js`,
+        },
+      ],
+    }),
+  ],
+  // css: {
+  //   postcss: {
+  //     plugins: [tailwindcss],
+  //   },
+  // },
   define: {
     "process.env.NODE_ENV": '"production"',
   },
