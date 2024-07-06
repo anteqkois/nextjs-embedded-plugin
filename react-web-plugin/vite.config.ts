@@ -1,4 +1,4 @@
-import cdn from 'vite-plugin-cdn-import'
+import cdn from "vite-plugin-cdn-import";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import { resolve } from "path";
@@ -10,15 +10,17 @@ import { resolve } from "path";
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, "./lib/main.ts"),
-      name: "react-web-plugin",
+      entry: resolve(__dirname, "./lib/plugin.ts"),
+      name: "reactWebPlugin",
+      formats: ["es", "umd"],
+      fileName: (format: string, entryName: string) => `${entryName}.${format}.js`,
     },
     // sourcemap: true,
     emptyOutDir: true,
   },
   plugins: [
     react(),
-		// libInjectCss(),
+    // libInjectCss(),
     cdn({
       modules: [
         {
