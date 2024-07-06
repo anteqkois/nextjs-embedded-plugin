@@ -2,7 +2,7 @@
 
 Simple way to create webapp plugin like Crips using React and serve using CDN. For demo puprose it is shared by local nestJS server. Both `ES` and `UMD` module are suppported. You can use them in that way:
 
-### For `UMD` module type use this html script (example in `plugin-umd.html` file)
+#### For `UMD` module type use this html script (example in `plugin-umd.html` file)
 
 ```
 	<script src="http://127.0.0.1:3001/load-plugin.umd.js"></script>
@@ -14,7 +14,7 @@ Simple way to create webapp plugin like Crips using React and serve using CDN. F
 	</script>
 ```
 
-### For `ES` module type use this html script (example in `plugin-es.html` file)
+#### For `ES` module type use this html script (example in `plugin-es.html` file)
 
 ```
 	<script type="module">
